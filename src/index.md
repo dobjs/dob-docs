@@ -1,7 +1,5 @@
 ---
-title: Installation
-layout: guide
-order: 1
+title: Dob
 ---
 
 ### CDN

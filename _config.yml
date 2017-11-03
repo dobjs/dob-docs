@@ -4,7 +4,7 @@
 
 # Site
 title: Dob
-subtitle:
+subtitle: Dob is a library that can tracking dependency, and all plugins based on dob, special for react usage.
 description:
 author: ascoders
 language:

@@ -1,0 +1,23 @@
+#header-simple
+  height: 60px
+  position: relative
+  border-bottom: 1px solid color-border
+
+.header-simple-logo
+  width: 30px
+  height: 30px
+  margin-right: 10px
+
+.main-nav-link-logo-container
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 15px !important
+
+.main-nav-simple-link
+  @extend $nav-link
+  font-weight: 300
+  letter-spacing: 1px
+  padding: 22px 15px
+  @media mq-mobile
+    display: none

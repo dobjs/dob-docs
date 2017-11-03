@@ -1,7 +1,6 @@
 # Header
 menu:
-  Home: /
-  Archives: /archives
+  Guide: /v2/guide/installation.html
 rss: /atom.xml
 
 # Content
@@ -27,10 +26,11 @@ index_widgets:
 archive_type: 'monthly'
 show_count: false
 
-# Miscellaneous
-google_analytics:
-favicon: /favicon.png
-twitter:
-google_plus:
-fb_admins:
-fb_app_id:
+guide:
+  Installation: installation
+  QuickStart: quick-start
+  observable: observable
+  action: action
+  dob-react: dob-react
+  principle: principle
+  unobservable: unobservable

@@ -1,5 +1,5 @@
 <aside id="sidebar"<% if (theme.sidebar === 'bottom'){ %> class="outer"<% } %>>
-  <% theme.widgets.forEach(function(widget){ %>
-    <%- partial('_widget/' + widget) %>
-  <% }) %>
+  <% for (var i in theme.guide){ %>
+    <a class="sidebar-link" href="<%- url_for() %>v2/guide/<%- theme.guide[i] %>.html"><%= i %></a>
+  <% } %>
 </aside>
