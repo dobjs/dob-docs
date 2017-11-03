@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "hexo server",
-    "deploy": "hexo deploy",
+    "deploy": "npm run clean && hexo deploy",
     "clean": "rm -rf .deploy_git && rm -rf public"
   },
   "repository": {
