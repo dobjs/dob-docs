@@ -11,6 +11,11 @@
           <a href="<%- url_for() %>" id="subtitle"><%= theme.subtitle %></a>
         </h2>
       <% } %>
+
+      <div class="guide-button-container">
+        <a href="<%- url_for() %>v2/guide/installation.html" class="guide-button">Document</a>
+        <a href="https://github.com/dobjs/dob" target="_blank" class="guide-button">Github</a>
+      </div>
     </div>
     <div id="header-inner" class="inner">
       <nav id="main-nav">
@@ -22,7 +27,7 @@
       </nav>
       <nav id="sub-nav">
         <% if (theme.rss){ %>
-          <a id="nav-rss-link" class="nav-icon" href="<%- theme.rss %>" title="<%= __('rss_feed') %>" target="_blank"></a>
+          <a id="nav-rss-link" class="nav-icon" href="<%- url_for(theme.rss) %>" title="<%= __('rss_feed') %>" target="_blank"></a>
         <% } %>
         <a class="nav-icon fa-github" href="https://github.com/dobjs/dob" title="dobjs - dob" target="_blank"></a>
       </nav>
