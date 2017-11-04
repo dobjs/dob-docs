@@ -49,7 +49,6 @@ widgets:
 
 # Miscellaneous
 google_analytics:
-favicon: /favicon.png
 twitter:
 google_plus:
 ```
