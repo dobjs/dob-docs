@@ -1,9 +1,7 @@
 .article
-  margin: 30px 0
 
 .article-inner
-  @extend $block
-  overflow: hidden
+  background-color: white
 
 .article-meta
   clearfix()
@@ -59,11 +57,6 @@
   ul, ol, dl
     margin-top: line-height
     margin-bottom: line-height
-  img, video
-    max-width: 100%
-    height: auto
-    display: block
-    margin: auto
   iframe
     border: none
   table
@@ -79,9 +72,9 @@
     padding: 10px 0
   blockquote
     font-family: font-serif
-    font-size: 1.4em
-    margin: line-height 20px
-    text-align: center
+    padding: 0 1em;
+    color: #6a737d;
+    border-left: 0.25em solid #dfe2e5;
     footer
       font-size: font-size
       margin: line-height 0
@@ -318,10 +311,7 @@ $article-share-link
   &.loaded
     position: absolute
     display: block
-  img
-    display: block
-    max-width: 100%
-    margin: 0 auto
+
 /*
 $article-gallery-ctrl
   position: absolute

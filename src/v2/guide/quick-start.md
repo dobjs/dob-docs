@@ -3,121 +3,69 @@ title: Quick start
 layout: guide
 order: 1
 ---
- 
-最简单的用法如下：
- 
-```javascript
-import { Action, observable } from 'dob'
-import { Provider, Connect } from 'dob-react'
 
-@observable
-export class UserStore {
-    name = 'bob'
-}
+Data flow is shown in the diagram:
 
-export class UserAction {
-    store = new UserStore()
+![stores](https://camo.githubusercontent.com/12bad0e0f215b60f578f27e5c3c3c01ea8ad5f05/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f544231657050506d6a6968534b4a6a793046655858624a747058612d3638372d3433352e706e67)
 
-    @Action setName (name: string) {
-        this.store.name = name
-    }
-}
-
-@Connect
-class App extends React.Component {
-    render() {
-        return (
-            <span>{this.props.store.name}</span>
-        )
-    }
-}
-
-const userAction = new UserAction()
-
-ReactDOM.render(
-    <Provider action={userAction} store={userAction.store}>
-        <App />
-    </Provider>
-, document.getElementById('react-dom'))
-```
- 
-例子中，`Provider` 接收了两个参数，分别是 `store` 与 `action`，分别被注入到 props 的 `props.store` 与 `props.action` 中，这么做只是为了标准化取数与改数。如果希望程序具有良好的可维护性，不要在 react 组件任何生命周期直接修改 `store`，所有修改请通过调用 `action` 完成。
-
-`UserStore` 被 `observable` 装饰，因此当任何数据有更新时，使用的组件都会触发重渲染。
-
-其实它会将所有参数注入到 `props` 中，因此也可以这么使用：
+First, create `ArticleStore` and `ArticleAction` with `dob`:
 
 ```typescript
-const data = observable({
-    a: "a",
-    b: "b"
-})
-
-<Provider {...data} />
-```
-
-那么就可以在组件中如此访问属性：`this.props.a` `this.props.b` 了。
- 
-## 使用依赖注入
-
-使用依赖注入可以使数据流更加灵活，需要安装一个额外的包 `dependency-inject`：
- 
-```javascript
-yarn add dependency-inject --save
-```
- 
-先创建 `store.js`
- 
-```javascript
-import { Action } from 'dob'
-import { inject, Container } from 'dependency-inject'
+import { observable, inject, Action } from "dob"
+import { Provider, Connect } from "dob-react"
 
 @observable
-export class UserStore {
-    name = 'bob'
+class ArticleStore {
+  articles = []
 }
 
-export class UserAction {
-    @inject(UserStore) userStore: UserStore
+class ArticleAction {
+  @inject(ArticleStore) articleStore
 
-    @Action setName (name: string) {
-        this.userStore.name = name
-    }
+  @Action addArticle() {
+    this.articleStore.articles.push({ title: "new Article" })
+  }
 }
-
-const container = new Container()
-container.set(UserStore, new UserStore())
-container.set(UserAction, new UserAction())
-
-export { container }
 ```
 
-再创建 `app.js`
+Special for `@inject` usage, it will inject single instance into any class, if you take all of them into `combineStores`:
 
-```javascript
-import { Provider, Connect } from 'dob-react'
-import { UserStore, UserAction, container } from './store'
+```typescript
+import { combineStores } from "dob"
+
+export const allStores = combineStores({
+    ArticleStore,
+    ArticleAction
+})
+```
+
+Then, use `Provider` in the root node:
+
+```typescript
+import { Provider } from "dob-react"
+
+ReactDOM.render(
+    <Provider {...allStores}>
+        <App />
+    </Provider>
+, domNode)
+```
+
+`Provider` **inject all the parameters it receives into the components that use the `Connect`**, finally, you can use all Actions and Stores in any react component:
+
+```typescript
+import { Connect } from "dob-react"
 
 @Connect
 class App extends React.Component {
-    componentWillMount () {
-        this.props.action.setName('nick')
-    }
-
     render() {
         return (
-            <span>{this.props.name}</span>
+            <span
+              onClick={() => {
+                this.props.ArticleAction.addArticle()
+              }}
+            >Article count: {this.props.ArticleStore.articles.length}</span>
         )
     }
 }
-
-ReactDOM.render(
-    <Provider store={container.get(UserStore)} action={container.get(UserAction)}>
-        <App />
-    </Provider>
-, document.getElementById('react-dom'))
 ```
-
-以上比较适合大型项目开发，将 action store 单独抽离出来，通过依赖注入相互注入。
-
-在 `@Connect` 时，不需要传入注入数据的名称，由于自动依赖收集的缘故，所有数据都会全量注入，但更新粒度会自动控制在最小，做到了方便开发，同时提升效率。

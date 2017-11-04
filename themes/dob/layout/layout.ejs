@@ -6,12 +6,10 @@
     <div id="container">
       <div id="wrap">
         <%- partial('_partial/header-simple', null, {cache: !config.relative_link}) %>
-        <div class="outer">
-          <section id="main"><%- body %></section>
+        <div class="outer-fullscreen">
+          <%- partial('_partial/sidebar', null, {cache: !config.relative_link}) %>
 
-          <% if (theme.sidebar && theme.sidebar !== 'bottom'){ %>
-            <%- partial('_partial/sidebar', null, {cache: !config.relative_link}) %>
-          <% } %>
+          <section id="main"><%- body %></section>
         </div>
         <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
       </div>

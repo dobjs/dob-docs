@@ -74,3 +74,13 @@ deploy:
   type: git
   repository: https://github.com/dobjs/dob-docs.git
   branch: gh-pages
+
+guide:
+  Introduction: introduction
+  Installation: installation
+  QuickStart: quick-start
+  # observable: observable
+  # action: action
+  # dob-react: dob-react
+  # principle: principle
+  # unobservable: unobservable
