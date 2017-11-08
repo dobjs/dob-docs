@@ -4,27 +4,44 @@ layout: guide
 order: 1
 ---
 
-### CDN for dob
-
-- jsdelivr: [https://cdn.jsdelivr.net/npm/dob/built/bundle.js](https://cdn.jsdelivr.net/npm/dob/built/bundle.js)
-- unpkg: [https://unpkg.com/dob/built/bundle.js](https://unpkg.com/dob/built/bundle.js)
-
-Which will reflect the lastest version.
+dob provides npm and CDN usage.
 
 ## NPM
 
 Install `dob` from NPM:
 
 ``` bash
-# latest stable
-$ npm install dob
+# Latest stable
+$ npm i dob
+
+# And also for `dob-react` `dob-react-devtools` `dob-redux`:
+$ npm i dob-react
+$ npm i dob-react-devtools
+$ npm i dob-redux
 ```
 
-And also for `dob-react` `dob-react-devtools` `dob-redux`:
+### CDN
 
-``` bash
-# latest stable
-$ npm install dob-react
-$ npm install dob-react-devtools
-$ npm install dob-redux
-```
+If you use script tags to load, you can also use this following CDN link:
+
+#### dob
+
+- [jsdelivr](https://cdn.jsdelivr.net/npm/dob/built/bundle.js)
+- [unpkg](https://unpkg.com/dob/built/bundle.js)
+
+#### dob-react
+
+- [jsdelivr](https://cdn.jsdelivr.net/npm/dob-react/built/bundle.js)
+- [unpkg](https://unpkg.com/dob-react/built/bundle.js)
+
+#### dob-react-devtools
+
+- [jsdelivr](https://cdn.jsdelivr.net/npm/dob-react-devtools/built/bundle.js)
+- [unpkg](https://unpkg.com/dob-react-devtools/built/bundle.js)
+
+#### dob-redux
+
+- [jsdelivr](https://cdn.jsdelivr.net/npm/dob-redux/built/bundle.js)
+- [unpkg](https://unpkg.com/dob-redux/built/bundle.js)
+
+> dob uses a globally unique state, so don't worry about cdn loads duplicate code.

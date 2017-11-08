@@ -3,7 +3,7 @@ highlight-background = whitesmoke
 highlight-current-line = #efefef
 highlight-selection = #d6d6d6
 highlight-foreground = #d4d4c
-highlight-comment = #e908c
+highlight-comment = #b7b7b7
 highlight-red = #c82829
 highlight-orange = #f5871f
 highlight-yellow = #eab700
@@ -11,6 +11,9 @@ highlight-green = #718c00
 highlight-aqua = #3e999f
 highlight-blue = #4271ae
 highlight-purple = #8959a8
+highlight-title = #9a742e
+highlight-params = #333
+highlight-built_in = #48489e
 
 $code-block
   background: highlight-background
@@ -109,8 +112,9 @@ $line-numbers
 
 pre
   .comment
-  .title
     color: highlight-comment
+  .title
+    color: highlight-title
   .variable
   .attribute
   .tag
@@ -127,8 +131,10 @@ pre
   .number
   .preprocessor
   .built_in
+    color: highlight-built_in
   .literal
   .params
+    color: highlight-params
   .constant
     color: highlight-orange
   .class

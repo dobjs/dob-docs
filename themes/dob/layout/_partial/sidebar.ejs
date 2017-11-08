@@ -1,5 +1,16 @@
 <aside id="sidebar"<% if (theme.sidebar === 'bottom'){ %> class="outer"<% } %>>
   <% for (var i in theme.guide){ %>
-    <a class="sidebar-link" href="<%- url_for() %>v2/guide/<%- theme.guide[i] %>.html"><%= i %></a>
+    <p class="sidebar-group"><%= i %></p>
+    <% for (var j in theme.guide[i]){ %>
+      <a 
+        class="
+          sidebar-link
+          <% if (page.path === 'v2/guide/' + theme.guide[i][j] + '.html') { %>
+            active
+          <% } %>
+        " 
+        href="<%- url_for() %>v2/guide/<%- theme.guide[i][j] %>.html"
+      ><%= j %></a>
+    <% } %>
   <% } %>
 </aside>

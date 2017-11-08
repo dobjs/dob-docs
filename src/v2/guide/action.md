@@ -4,11 +4,9 @@ layout: guide
 order: 2
 ---
 
-## 概念
+`Action` is to reduce the number of dependency tracking triggers, it can collect all changes, and then merge trigger.
 
-`Action` 是为了减少依赖追踪触发次数，将所有变更收集起来，再合并触发。
-
-## 作为函数使用
+## ES5 usage
 
 ```typescript
 import { observe, observable, Action } from 'dob'
@@ -22,19 +20,20 @@ observe(() => {
 })
 
 Action(()=> {
-	dynamicObj.a = 2
+    dynamicObj.a = 2
     dynamicObj.a = 3
 })
 ```
 
-以上会输出两条信息：
+The above will output two messages:
 
 `dynamicObj.a change to 1`
 `dynamicObj.a change to 3`
 
-可见有2次修改被合并了。
 
-## 作为装饰器使用
+There are two changes can be seen merged.
+
+## ES6 usage
 
 ```typescript
 import { observe, observable, Action } from 'dob'
@@ -51,21 +50,13 @@ class CustomAction {
     @Action someAction() {
         dynamicObj.a = 2
         dynamicObj.a = 3
-		this.otherAction()
-	}
-	
-	@Action otherAction() {
-		dynamicObj.a = 4
-		dynamicObj.a = 5
-	}
+    }
 }
 
 new CustomAction().someAction()
 ```
 
-以上会输出两条信息：
+The same effect:
 
 `dynamicObj.a change to 1`
-`dynamicObj.a change to 5`
-
-可见有4次修改被合并了。
+`dynamicObj.a change to 3`

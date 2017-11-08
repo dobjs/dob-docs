@@ -18,13 +18,32 @@ else
     ol
       list-style: decimal
 
+.sidebar-group
+  margin-left: 20px
+  margin-top: 5px
+  margin-bottom: 5px
+  font-size: 16px
+  color: #999
+
+$sidebar-active
+  color: #145c95
+
 .sidebar-link
-  color: #666
+  color: #555
   text-decoration: none
   padding: 10px 20px
+  margin-left: 20px
   font-size: 16px
+  letter-spacing: 1px
+  height: 15px
+  display: flex;
+  align-items: center;
   &:hover
-    color: #333
+    @extend $sidebar-active
+  
+.sidebar-link.active
+    @extend $sidebar-active
+    font-weight: bold
 
 .category-list-count
 .tag-list-count
