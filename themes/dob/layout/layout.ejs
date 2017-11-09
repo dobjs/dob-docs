@@ -1,6 +1,7 @@
 <% var isIndex = page.path === 'index.html' %>
 
-<script src="https://unpkg.com/dob/built/bundle.js"></script>
+<!-- this needs to be loaded before guide's inline scripts -->
+<script src="<%- url_for("/js/dob.js") %>"></script>
 
 <%- partial('_partial/head') %>
 <body>
