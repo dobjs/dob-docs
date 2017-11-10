@@ -89,5 +89,6 @@ guide:
     # unobservable: unobservable
   2. API:
     2.1. Observable: observable
-    2.2. Action: action
+    2.2. Unobservable: unobservable
+    2.3. Action: action
   3. Combine Redux:

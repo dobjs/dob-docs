@@ -4,26 +4,40 @@ layout: guide
 order: 1
 ---
 
-## 简介
-可以中断对依赖追踪的监听。
+stop the observe.
 
-## 示例
+## Usage
 
-```typescript
-import { observe, observable } from 'dob'
-
-const dynamicObj = observable({
-    a: 1
+```javascript
+const obj = observable({
+    text: "init"
 })
 
 const signal = observe(() => {
-    console.log('dynamicObj.a change to', dynamicObj.a) 
+    console.log('dynamicObj.a')
 })
 
 signal.unobserve()
-dynamicObj.a = 2
 ```
 
-以上只会输出一个 `dynamicObj.a change to 1`，之后的 2 不会再输出了。
-
----
+{% raw %}
+<div id="demo-one" class="demo-after-code">
+    <button onclick="stopObserve()">stop observe</button>
+    <input type="text" placeholder="change text" oninput="changeText(this.value)"></input>
+    <div class="result"></div>
+</div>
+<script>
+const obj = observable({
+    text: "init"
+})
+const signal = observe(() => {
+    document.querySelector('#demo-one div').innerHTML = `${obj.text}`
+})
+function changeText(value){
+    obj.text = value    
+}
+function stopObserve(){
+    signal.unobserve()
+}
+</script>
+{% endraw %}
