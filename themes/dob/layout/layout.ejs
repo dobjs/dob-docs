@@ -3,6 +3,17 @@
 <!-- this needs to be loaded before guide's inline scripts -->
 <script src="<%- url_for("/js/dob.js") %>"></script>
 
+<script>
+  function log(el, text) {
+    document.querySelector(el).innerHTML += `
+      <div class="log-line">
+        <span class="log-line-gt">&gt;</span>
+        ${text}
+      </div>
+    `;
+  }
+</script>
+
 <%- partial('_partial/head') %>
 <body>
   <% if (!isIndex) { %>
