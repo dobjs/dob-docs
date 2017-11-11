@@ -1,10 +1,9 @@
 ---
 title: unobserve
 layout: guide
-order: 1
 ---
 
-stop the observe.
+stop observe.
 
 ## Usage
 

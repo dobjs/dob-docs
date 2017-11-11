@@ -1,7 +1,6 @@
 ---
 title: Action
 layout: guide
-order: 2
 ---
 
 `Action` is to reduce the number of dependency tracking triggers, it can collect all changes, and then merge trigger.

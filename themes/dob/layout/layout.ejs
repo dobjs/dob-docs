@@ -8,7 +8,7 @@
     document.querySelector(el).innerHTML += `
       <div class="log-line">
         <span class="log-line-gt">&gt;</span>
-        ${text}
+        ${Array.prototype.slice.call(arguments).slice(1).join(" ")}
       </div>
     `;
   }

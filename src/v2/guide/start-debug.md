@@ -1,8 +1,33 @@
 ---
-title: debug
+title: StartDebug
 layout: guide
-order: 3
 ---
+
+Start debug, so you can listen `debug` by using `dobEvent`. THis is a low level api.
+
+## Usage
+
+```javascript
+import { startDebug, dobEvent } from "dob"
+
+startDebug()
+
+dobEvent.on("debug", debugInfo => {
+  console.log(debugInfo)
+})
+```
+
+## StopDebug
+
+```javascript
+import { stopDebug } from "dob"
+
+stopDebug()
+```
+
+> The most common use is [debug in dob-react](./devtools.html)
+
+## Defintion
 
 `IDebugInfo`:
 

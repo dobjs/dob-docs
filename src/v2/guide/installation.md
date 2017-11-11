@@ -1,7 +1,6 @@
 ---
 title: Installation
 layout: guide
-order: 1
 ---
 
 dob provides npm and CDN usage.

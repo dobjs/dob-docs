@@ -1,7 +1,6 @@
 ---
 title: Observable
 layout: guide
-order: 1
 ---
 
 `observable` use `proxy` to return a proxy object, the proxy object can be monitored by `observe`.
@@ -16,7 +15,7 @@ import { observable } from "dob"
 // es5
 observable(obj)
 
-// es6
+// esnext
 @observable
 class Obj {
     someField = ".."

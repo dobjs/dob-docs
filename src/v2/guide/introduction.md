@@ -1,7 +1,6 @@
 ---
 title: Introduction
 layout: guide
-order: 0
 ---
 
 <a href="https://github.com/dobjs/dob" target="_blank">

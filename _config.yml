@@ -82,13 +82,15 @@ guide:
     1.2. Introduction: introduction
     1.3. ForReact: for-react
     1.4. Devtools: devtools
-    # observable: observable
-    # action: action
-    # dob-react: dob-react
-    # principle: principle
-    # unobservable: unobservable
-  2. API:
+  2. API for Dob:
     2.1. Observable: observable
     2.2. Unobservable: unobservable
-    2.3. Action: action
-  3. Combine Redux:
+    2.3. IsObservable: is-observable
+    2.4. Action: action
+    2.5. UseStrict: use-strict
+    2.6. Inject: inject
+    2.6. StartDebug: start-debug
+  3. API for Dob-react:
+    3.1. startDebug: dob-react-start-debug
+    3.2. Connect: connect
+  4. Combine Redux:
