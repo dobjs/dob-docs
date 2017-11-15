@@ -1,0 +1,219 @@
+
+
+<!-- this needs to be loaded before guide's inline scripts -->
+<script src="/dob-docs/js/dob.js"></script>
+
+<script>
+  function log(el, text) {
+    document.querySelector(el).innerHTML += `
+      <div class="log-line">
+        <span class="log-line-gt">&gt;</span>
+        ${Array.prototype.slice.call(arguments).slice(1).join(" ")}
+      </div>
+    `;
+  }
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>UseStrict | Dob</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="useStrict is a method to open strict mode in dob. 1import &amp;#123; useStrict &amp;#125; from &quot;dob&quot; Usage1useStrict() Strict ModeIt’s not allow to change any observable value out of Action: 12345678useStrict">
+<meta property="og:type" content="website">
+<meta property="og:title" content="UseStrict">
+<meta property="og:url" content="https://dobjs.github.io/v2/guide/use-strict.html">
+<meta property="og:site_name" content="Dob">
+<meta property="og:description" content="useStrict is a method to open strict mode in dob. 1import &amp;#123; useStrict &amp;#125; from &quot;dob&quot; Usage1useStrict() Strict ModeIt’s not allow to change any observable value out of Action: 12345678useStrict">
+<meta property="og:updated_time" content="2017-11-11T14:15:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UseStrict">
+<meta name="twitter:description" content="useStrict is a method to open strict mode in dob. 1import &amp;#123; useStrict &amp;#125; from &quot;dob&quot; Usage1useStrict() Strict ModeIt’s not allow to change any observable value out of Action: 12345678useStrict">
+  
+    <link rel="alternate" href="/atom.xml" title="Dob" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/dob-docs/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dob-docs/css/style.css">
+</head>
+
+<body>
+  
+    <div id="container">
+      <div id="wrap">
+        <header id="header-simple">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <a class="main-nav-simple-link main-nav-link-logo-container" href="/dob-docs/">
+          <img src="https://avatars1.githubusercontent.com/u/32093464?s=400&u=d360e449a9d59cf7422100349711ab0e0389d06a&v=4" class="header-simple-logo"/>
+          Dob
+        </a>
+        
+          <a class="main-nav-simple-link" href="/dob-docs/v2/guide/introduction.html">Guide</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" target="_blank"></a>
+        
+        <a class="nav-icon fa-github" href="https://github.com/dobjs/dob" title="dobjs - dob" target="_blank"></a>
+      </nav>
+    </div>
+  </div>
+</header>
+        <div class="outer-fullscreen">
+          <aside id="sidebar">
+  
+    <p class="sidebar-group">1. Overview</p>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/installation.html"
+      >1.1. Installation</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/introduction.html"
+      >1.2. Introduction</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/for-react.html"
+      >1.3. ForReact</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/devtools.html"
+      >1.4. Devtools</a>
+    
+  
+    <p class="sidebar-group">2. API for Dob</p>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/observable.html"
+      >2.1. Observable</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/unobservable.html"
+      >2.2. Unobservable</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/is-observable.html"
+      >2.3. IsObservable</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/action.html"
+      >2.4. Action</a>
+    
+      <a 
+        class="sidebar-link  active"
+        href="/dob-docs/v2/guide/use-strict.html"
+      >2.5. UseStrict</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/inject.html"
+      >2.6. Inject</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/start-debug.html"
+      >2.6. StartDebug</a>
+    
+  
+    <p class="sidebar-group">3. API for Dob-react</p>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/dob-react-start-debug.html"
+      >3.1. startDebug</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/connect.html"
+      >3.2. Connect</a>
+    
+  
+    <p class="sidebar-group">4. Combine Redux</p>
+    
+  
+</aside>
+
+          <section id="main"><article id="guide-undefined" class="article article-type-guide" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      UseStrict
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>useStrict</code> is a method to open strict mode in dob.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useStrict &#125; <span class="keyword">from</span> <span class="string">"dob"</span></span><br></pre></td></tr></table></figure>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useStrict()</span><br></pre></td></tr></table></figure>
+<h2 id="Strict-Mode"><a href="#Strict-Mode" class="headerlink" title="Strict Mode"></a>Strict Mode</h2><p>It’s not allow to change any observable value out of <code>Action</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">useStrict()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = observable()</span><br><span class="line">obj.title = <span class="string">"bob"</span> <span class="comment">// throw error!</span></span><br><span class="line"></span><br><span class="line">Action(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  obj.title = <span class="string">"bob"</span> <span class="comment">// it's ok!</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="ESNext-Usage"><a href="#ESNext-Usage" class="headerlink" title="ESNext Usage"></a>ESNext Usage</h2><p><code>Action</code> with decorator usage.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">useStrict()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeStore</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeAction</span> </span>&#123;</span><br><span class="line">  @inject(SomeStore) store</span><br><span class="line"></span><br><span class="line">  @Action methodTwo() &#123;</span><br><span class="line">    <span class="keyword">this</span>.store.title = <span class="string">"bob"</span> <span class="comment">// it's ok!</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="cancelStrict"><a href="#cancelStrict" class="headerlink" title="cancelStrict"></a>cancelStrict</h2><p>To cancle strict mode.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; cancelStrict &#125; <span class="keyword">from</span> <span class="string">"dob"</span></span><br><span class="line">cancelStrict()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a target="_blank" href="https://github.com/dobjs/dob-docs/blob/master/src/v2/guide/use-strict.md">Edit this page on github</a>
+
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 ascoders<br>
+    </div>
+  </div>
+</footer>
+      </div>
+      <nav id="mobile-nav">
+  
+    <a href="/dob-docs/v2/guide/introduction.html" class="mobile-nav-link">Guide</a>
+  
+</nav>
+      
+
+<script src="/dob-docs/js/script.js"></script>
+
+    </div>
+  
+</body>
+
+</html>

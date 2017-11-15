@@ -1,0 +1,129 @@
+
+
+<!-- this needs to be loaded before guide's inline scripts -->
+<script src="/dob-docs/js/dob.js"></script>
+
+<script>
+  function log(el, text) {
+    document.querySelector(el).innerHTML += `
+      <div class="log-line">
+        <span class="log-line-gt">&gt;</span>
+        ${Array.prototype.slice.call(arguments).slice(1).join(" ")}
+      </div>
+    `;
+  }
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Dob</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Dob">
+<meta property="og:url" content="https://dobjs.github.io/index.html">
+<meta property="og:site_name" content="Dob">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dob">
+  
+    <link rel="alternate" href="/atom.xml" title="Dob" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/dob-docs/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dob-docs/css/style.css">
+</head>
+
+<body>
+  
+    <div id="container">
+      <div id="wrap">
+        <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap" class="logo-wrap">
+        <img src="https://avatars1.githubusercontent.com/u/32093464?s=400&u=d360e449a9d59cf7422100349711ab0e0389d06a&v=4" class="header-logo"/>
+        <a href="/dob-docs/" id="logo">Dob</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/dob-docs/" id="subtitle">Dob is a library that can tracking dependency, and all plugins based on dob, special for react usage.</a>
+        </h2>
+      
+
+      <div class="guide-button-container">
+        <a href="/dob-docs/v2/guide/introduction.html" class="guide-button">Document</a>
+        <a href="https://github.com/dobjs/dob" target="_blank" class="guide-button">Github</a>
+      </div>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <a class="main-nav-link" href="/dob-docs/">Dob</a>
+        
+          <a class="main-nav-link" href="/dob-docs/v2/guide/introduction.html">Guide</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/dob-docs/atom.xml" title="RSS Feed" target="_blank"></a>
+        
+        <a class="nav-icon fa-github" href="https://github.com/dobjs/dob" title="dobjs - dob" target="_blank"></a>
+      </nav>
+    </div>
+  </div>
+</header>
+        <div class="outer">
+          <div class="home-container">
+
+  <div class="home-feature-container">
+    <div class="home-feature-label-container">
+      <div class="home-feature-title">JS naturally</div>
+      <div class="home-feature-description">Writing more natural, support native Map Set and so on, direct assignment to object is valid</div>
+    </div>
+
+    <iframe width="100%" height="400" src="//jsfiddle.net/1q772uL0/20/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+  </div>
+
+  <div class="home-hr"></div>
+
+  <div class="home-feature-container">
+    <iframe width="100%" height="400" src="//jsfiddle.net/yp90Lep9/21/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+    <div class="home-feature-label-container-right">
+      <div class="home-feature-title">Best practice for react</div>
+      <div class="home-feature-description">Built in dependency injection and best practices, easy to write code with good maintainability</div>
+    </div>
+  </div>
+
+</div>
+        </div>
+        <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 ascoders<br>
+    </div>
+  </div>
+</footer>
+      </div>
+      <nav id="mobile-nav">
+  
+    <a href="/dob-docs/v2/guide/introduction.html" class="mobile-nav-link">Guide</a>
+  
+</nav>
+      
+
+<script src="/dob-docs/js/script.js"></script>
+
+    </div>
+  
+</body>
+
+</html>

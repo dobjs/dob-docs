@@ -1,0 +1,228 @@
+
+
+<!-- this needs to be loaded before guide's inline scripts -->
+<script src="/dob-docs/js/dob.js"></script>
+
+<script>
+  function log(el, text) {
+    document.querySelector(el).innerHTML += `
+      <div class="log-line">
+        <span class="log-line-gt">&gt;</span>
+        ${Array.prototype.slice.call(arguments).slice(1).join(" ")}
+      </div>
+    `;
+  }
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>dob-react | Dob</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概念dob-react 是连接 dob 与 react 的桥梁。 安装1yarn add dob-react --save 快速入手最简单的用法如下： 1234567891011121314151617181920212223242526272829303132import &amp;#123; Action, observable &amp;#125; from &apos;dob&apos;import &amp;#123; Provi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="dob-react">
+<meta property="og:url" content="https://dobjs.github.io/v2/guide/dob-react.html">
+<meta property="og:site_name" content="Dob">
+<meta property="og:description" content="概念dob-react 是连接 dob 与 react 的桥梁。 安装1yarn add dob-react --save 快速入手最简单的用法如下： 1234567891011121314151617181920212223242526272829303132import &amp;#123; Action, observable &amp;#125; from &apos;dob&apos;import &amp;#123; Provi">
+<meta property="og:updated_time" content="2017-11-11T13:28:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dob-react">
+<meta name="twitter:description" content="概念dob-react 是连接 dob 与 react 的桥梁。 安装1yarn add dob-react --save 快速入手最简单的用法如下： 1234567891011121314151617181920212223242526272829303132import &amp;#123; Action, observable &amp;#125; from &apos;dob&apos;import &amp;#123; Provi">
+  
+    <link rel="alternate" href="/atom.xml" title="Dob" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/dob-docs/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dob-docs/css/style.css">
+</head>
+
+<body>
+  
+    <div id="container">
+      <div id="wrap">
+        <header id="header-simple">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <a class="main-nav-simple-link main-nav-link-logo-container" href="/dob-docs/">
+          <img src="https://avatars1.githubusercontent.com/u/32093464?s=400&u=d360e449a9d59cf7422100349711ab0e0389d06a&v=4" class="header-simple-logo"/>
+          Dob
+        </a>
+        
+          <a class="main-nav-simple-link" href="/dob-docs/v2/guide/introduction.html">Guide</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" target="_blank"></a>
+        
+        <a class="nav-icon fa-github" href="https://github.com/dobjs/dob" title="dobjs - dob" target="_blank"></a>
+      </nav>
+    </div>
+  </div>
+</header>
+        <div class="outer-fullscreen">
+          <aside id="sidebar">
+  
+    <p class="sidebar-group">1. Overview</p>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/installation.html"
+      >1.1. Installation</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/introduction.html"
+      >1.2. Introduction</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/for-react.html"
+      >1.3. ForReact</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/devtools.html"
+      >1.4. Devtools</a>
+    
+  
+    <p class="sidebar-group">2. API for Dob</p>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/observable.html"
+      >2.1. Observable</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/unobservable.html"
+      >2.2. Unobservable</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/is-observable.html"
+      >2.3. IsObservable</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/action.html"
+      >2.4. Action</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/use-strict.html"
+      >2.5. UseStrict</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/inject.html"
+      >2.6. Inject</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/start-debug.html"
+      >2.6. StartDebug</a>
+    
+  
+    <p class="sidebar-group">3. API for Dob-react</p>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/dob-react-start-debug.html"
+      >3.1. startDebug</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/connect.html"
+      >3.2. Connect</a>
+    
+  
+    <p class="sidebar-group">4. Combine Redux</p>
+    
+  
+</aside>
+
+          <section id="main"><article id="guide-undefined" class="article article-type-guide" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      dob-react
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><code>dob-react</code> 是连接 <code>dob</code> 与 <code>react</code> 的桥梁。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add dob-react --save</span><br></pre></td></tr></table></figure>
+<h2 id="快速入手"><a href="#快速入手" class="headerlink" title="快速入手"></a>快速入手</h2><p>最简单的用法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Action, observable &#125; <span class="keyword">from</span> <span class="string">'dob'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Provider, Connect &#125; <span class="keyword">from</span> <span class="string">'dob-react'</span></span><br><span class="line"></span><br><span class="line">@observable</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">UserStore</span> </span>&#123;</span><br><span class="line">    name = <span class="string">'bob'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">UserAction</span> </span>&#123;</span><br><span class="line">    store = <span class="keyword">new</span> UserStore()</span><br><span class="line"></span><br><span class="line">    @Action setName (name: string) &#123;</span><br><span class="line">        <span class="keyword">this</span>.store.name = name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Connect</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;span&gt;&#123;<span class="keyword">this</span>.props.store.name&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const userAction = new UserAction()</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(</span></span><br><span class="line"><span class="regexp">    &lt;Provider action=&#123;userAction&#125; store=&#123;userAction.store&#125;&gt;</span></span><br><span class="line"><span class="regexp">        &lt;App /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/Provider&gt;</span></span><br><span class="line"><span class="regexp">, document.getElementById('react-dom'))</span></span><br></pre></td></tr></table></figure>
+<p>例子中，<code>Provider</code> 接收了两个参数，分别是 <code>store</code> 与 <code>action</code>，分别被注入到 props 的 <code>props.store</code> 与 <code>props.action</code> 中，这么做只是为了标准化取数与改数。如果希望程序具有良好的可维护性，不要在 react 组件任何生命周期直接修改 <code>store</code>，所有修改请通过调用 <code>action</code> 完成。</p>
+<p><code>Provider</code> 会将传入的数据自动用 <code>observable</code> 包裹，因此当任何数据有更新时，使用的组件都会触发重渲染。</p>
+<p>其实它会将所有参数注入到 <code>props</code> 中，因此也可以这么使用：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = &#123;</span><br><span class="line">    a: <span class="string">"a"</span>,</span><br><span class="line">    b: <span class="string">"b"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;Provider &#123;...data&#125; /&gt;</span><br></pre></td></tr></table></figure>
+<p>那么就可以在组件中如此访问属性：<code>this.props.a</code> <code>this.props.b</code> 了。</p>
+<h2 id="使用依赖注入"><a href="#使用依赖注入" class="headerlink" title="使用依赖注入"></a>使用依赖注入</h2><p>使用依赖注入可以使数据流更加灵活，需要安装一个额外的包 <code>dependency-inject</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add dependency-inject --save</span><br></pre></td></tr></table></figure>
+<p>先创建 <code>store.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Action, observable &#125; <span class="keyword">from</span> <span class="string">'dob'</span></span><br><span class="line"><span class="keyword">import</span> &#123; inject, Container &#125; <span class="keyword">from</span> <span class="string">'dependency-inject'</span></span><br><span class="line"></span><br><span class="line">@observable</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">UserStore</span> </span>&#123;</span><br><span class="line">    name = <span class="string">'bob'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">UserAction</span> </span>&#123;</span><br><span class="line">    @inject(UserStore) userStore: UserStore</span><br><span class="line"></span><br><span class="line">    @Action setName (name: string) &#123;</span><br><span class="line">        <span class="keyword">this</span>.userStore.name = name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> container = <span class="keyword">new</span> Container()</span><br><span class="line">container.set(UserStore, <span class="keyword">new</span> UserStore())</span><br><span class="line">container.set(UserAction, <span class="keyword">new</span> UserAction())</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; container &#125;</span><br></pre></td></tr></table></figure>
+<p>再创建 <code>app.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Provider, Connect &#125; <span class="keyword">from</span> <span class="string">'dob-react'</span></span><br><span class="line"><span class="keyword">import</span> &#123; UserStore, UserAction, container &#125; <span class="keyword">from</span> <span class="string">'./store'</span></span><br><span class="line"></span><br><span class="line">@Connect</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    componentWillMount () &#123;</span><br><span class="line">        <span class="keyword">this</span>.props.action.setName(<span class="string">'nick'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;span&gt;&#123;<span class="keyword">this</span>.props.store.name&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(</span></span><br><span class="line"><span class="regexp">    &lt;Provider store=&#123;container.get(UserStore)&#125; action=&#123;container.get(UserAction)&#125;&gt;</span></span><br><span class="line"><span class="regexp">        &lt;App /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/Provider&gt;</span></span><br><span class="line"><span class="regexp">, document.getElementById('react-dom'))</span></span><br></pre></td></tr></table></figure>
+<p>以上比较适合大型项目开发，将 action store 单独抽离出来，通过依赖注入相互注入。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>在 <code>@Connect</code> 时，不需要传入注入数据的名称，由于自动依赖收集的缘故，所有数据都会全量注入，但更新粒度会自动控制在最小，做到了方便开发，同时提升效率。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a target="_blank" href="https://github.com/dobjs/dob-docs/blob/master/src/v2/guide/dob-react.md">Edit this page on github</a>
+
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 ascoders<br>
+    </div>
+  </div>
+</footer>
+      </div>
+      <nav id="mobile-nav">
+  
+    <a href="/dob-docs/v2/guide/introduction.html" class="mobile-nav-link">Guide</a>
+  
+</nav>
+      
+
+<script src="/dob-docs/js/script.js"></script>
+
+    </div>
+  
+</body>
+
+</html>

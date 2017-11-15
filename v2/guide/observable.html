@@ -1,0 +1,374 @@
+
+
+<!-- this needs to be loaded before guide's inline scripts -->
+<script src="/dob-docs/js/dob.js"></script>
+
+<script>
+  function log(el, text) {
+    document.querySelector(el).innerHTML += `
+      <div class="log-line">
+        <span class="log-line-gt">&gt;</span>
+        ${Array.prototype.slice.call(arguments).slice(1).join(" ")}
+      </div>
+    `;
+  }
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Observable | Dob</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="observable use proxy to return a proxy object, the proxy object can be monitored by observe. 1import &amp;#123; observable &amp;#125; from &quot;dob&quot; Usage12345678// es5observable(obj)// esnext@observableclass Obj">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Observable">
+<meta property="og:url" content="https://dobjs.github.io/v2/guide/observable.html">
+<meta property="og:site_name" content="Dob">
+<meta property="og:description" content="observable use proxy to return a proxy object, the proxy object can be monitored by observe. 1import &amp;#123; observable &amp;#125; from &quot;dob&quot; Usage12345678// es5observable(obj)// esnext@observableclass Obj">
+<meta property="og:updated_time" content="2017-11-11T13:46:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Observable">
+<meta name="twitter:description" content="observable use proxy to return a proxy object, the proxy object can be monitored by observe. 1import &amp;#123; observable &amp;#125; from &quot;dob&quot; Usage12345678// es5observable(obj)// esnext@observableclass Obj">
+  
+    <link rel="alternate" href="/atom.xml" title="Dob" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/dob-docs/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dob-docs/css/style.css">
+</head>
+
+<body>
+  
+    <div id="container">
+      <div id="wrap">
+        <header id="header-simple">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <a class="main-nav-simple-link main-nav-link-logo-container" href="/dob-docs/">
+          <img src="https://avatars1.githubusercontent.com/u/32093464?s=400&u=d360e449a9d59cf7422100349711ab0e0389d06a&v=4" class="header-simple-logo"/>
+          Dob
+        </a>
+        
+          <a class="main-nav-simple-link" href="/dob-docs/v2/guide/introduction.html">Guide</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" target="_blank"></a>
+        
+        <a class="nav-icon fa-github" href="https://github.com/dobjs/dob" title="dobjs - dob" target="_blank"></a>
+      </nav>
+    </div>
+  </div>
+</header>
+        <div class="outer-fullscreen">
+          <aside id="sidebar">
+  
+    <p class="sidebar-group">1. Overview</p>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/installation.html"
+      >1.1. Installation</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/introduction.html"
+      >1.2. Introduction</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/for-react.html"
+      >1.3. ForReact</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/devtools.html"
+      >1.4. Devtools</a>
+    
+  
+    <p class="sidebar-group">2. API for Dob</p>
+    
+      <a 
+        class="sidebar-link  active"
+        href="/dob-docs/v2/guide/observable.html"
+      >2.1. Observable</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/unobservable.html"
+      >2.2. Unobservable</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/is-observable.html"
+      >2.3. IsObservable</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/action.html"
+      >2.4. Action</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/use-strict.html"
+      >2.5. UseStrict</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/inject.html"
+      >2.6. Inject</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/start-debug.html"
+      >2.6. StartDebug</a>
+    
+  
+    <p class="sidebar-group">3. API for Dob-react</p>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/dob-react-start-debug.html"
+      >3.1. startDebug</a>
+    
+      <a 
+        class="sidebar-link "
+        href="/dob-docs/v2/guide/connect.html"
+      >3.2. Connect</a>
+    
+  
+    <p class="sidebar-group">4. Combine Redux</p>
+    
+  
+</aside>
+
+          <section id="main"><article id="guide-undefined" class="article article-type-guide" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Observable
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>observable</code> use <code>proxy</code> to return a proxy object, the proxy object can be monitored by <code>observe</code>.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; observable &#125; <span class="keyword">from</span> <span class="string">"dob"</span></span><br></pre></td></tr></table></figure>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// es5</span></span><br><span class="line">observable(obj)</span><br><span class="line"></span><br><span class="line"><span class="comment">// esnext</span></span><br><span class="line">@observable</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Obj</span> </span>&#123;</span><br><span class="line">    someField = <span class="string">".."</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><p><code>observable</code> support native <code>object</code>、<code>array</code>、<code>Map</code>、<code>WeakMap</code>、<code>Set</code>、<code>WeakSet</code>, support undefined variables, dynamic conditional branches.</p>
+<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = observable(&#123;</span><br><span class="line">    user: &#123;</span><br><span class="line">        name: <span class="string">"jeck"</span>,</span><br><span class="line">        age: <span class="number">25</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">observe(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;obj.user.name&#125;</span>, <span class="subst">$&#123;obj.user.age&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br><span class="line">obj.user.name = <span class="string">"bob"</span></span><br><span class="line">obj.user = &#123;</span><br><span class="line">    name: <span class="string">"well"</span>,</span><br><span class="line">    age: <span class="number">16</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">delete</span> obj.user.name</span><br></pre></td></tr></table></figure>
+
+<div id="demo-object" class="demo-after-code">
+    <div class="result"></div>
+</div>
+<script>
+(()=>{
+    const obj = observable({
+        user: {
+            name: "jeck",
+            age: 25,
+        }
+    })
+    observe(() => {
+        log('#demo-object div', `${obj.user.name}, ${obj.user.age}`)
+    })
+    obj.user.name = "bob"
+    obj.user = {
+        name: "well",
+        age: 16,
+    }
+    delete obj.user.name
+})()
+</script>
+
+<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><p>Only when the variables used are modified, the action will be triggered again.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = observable([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">observe(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;arr.map(i =&gt; i)&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">10</span></span><br><span class="line">arr.push(<span class="number">6</span>)</span><br><span class="line">Action(<span class="function"><span class="params">()</span>=&gt;</span>&#123; arr.shift() &#125;)</span><br><span class="line">Action(<span class="function"><span class="params">()</span>=&gt;</span>&#123; arr.splice(<span class="number">2</span>, <span class="number">1</span>) &#125;)</span><br><span class="line"><span class="keyword">delete</span> arr[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<div id="demo-array" class="demo-after-code">
+    <div class="result"></div>
+</div>
+<script>
+(()=>{
+    let arr = observable([1, 2, 3, 4, 5])
+    observe(() => {
+        log('#demo-array div', `${arr.map(i => i)}`)
+    })
+    arr[0] = 10
+    arr.push(6)
+    Action(()=>{ arr.shift() })
+    Action(()=>{ arr.splice(2, 1) })
+    delete arr[0]
+})()
+</script>
+
+<blockquote>
+<p>Because of JS achieve <code>shift</code> <code>splice</code> by divided into multiple steps, so use <code>Action</code> can be aggregated into an action.</p>
+</blockquote>
+<p><code>.length</code> will trigger action when any change, which will change array’s length:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = observable([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">observe(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;arr.length&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br><span class="line">arr.push(<span class="number">6</span>)</span><br><span class="line">arr.splice(<span class="number">2</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<div id="demo-array-1" class="demo-after-code">
+    <div class="result"></div>
+</div>
+<script>
+(()=>{
+    let arr = observable([1, 2, 3, 4, 5])
+    observe(() => {
+        log('#demo-array-1 div', `${arr.length}`)
+    })
+    arr.push(6)
+    arr.splice(2, 1)
+})()
+</script>
+
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p>listen size:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = observable(<span class="keyword">new</span> <span class="built_in">Map</span>())</span><br><span class="line">observe(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;map.size&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br><span class="line">map.set(<span class="string">"banana"</span>, <span class="number">5</span>)</span><br><span class="line">map.set(<span class="string">"apple"</span>, <span class="number">3</span>)</span><br><span class="line">map.clear()</span><br></pre></td></tr></table></figure>
+
+<div id="demo-map" class="demo-after-code">
+    <div class="result"></div>
+</div>
+<script>
+(()=>{
+    const map = observable(new Map())
+    observe(() => {
+        log('#demo-map div', `${map.size}`)
+    })
+    map.set("banana", 5)
+    map.set("apple", 3)
+})()
+</script>
+
+<p>listen single key:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = observable(<span class="keyword">new</span> <span class="built_in">Map</span>())</span><br><span class="line">observe(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;map1.get(<span class="string">"apple"</span>)&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br><span class="line">map1.set(<span class="string">"apple"</span>, <span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+
+<div id="demo-map-1" class="demo-after-code">
+    <div class="result"></div>
+</div>
+<script>
+(()=>{
+    const map = observable(new Map())
+    observe(() => {
+        log('#demo-map-1 div', `${map.get("apple")}`)
+    })
+    map.set("apple", 6)
+})()
+</script>
+
+<h3 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h3><p>Same with Map.</p>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>listen size:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> set = observable(<span class="keyword">new</span> <span class="built_in">Set</span>())</span><br><span class="line">observe(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;set.size&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br><span class="line">set.add(<span class="string">"banana"</span>)</span><br><span class="line">set.add(<span class="string">"apple"</span>)</span><br><span class="line">set.clear()</span><br></pre></td></tr></table></figure>
+
+<div id="demo-set" class="demo-after-code">
+    <div class="result"></div>
+</div>
+<script>
+(()=>{
+    const set = observable(new Set())
+    observe(() => {
+        log('#demo-set div', `${set.size}`)
+    })
+    set.add("banana")
+    set.add("apple")
+    set.clear()
+})()
+</script>
+
+<h3 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h3><p>Same with Set.</p>
+<h3 id="Expand-thinking"><a href="#Expand-thinking" class="headerlink" title="Expand thinking"></a>Expand thinking</h3><p>All of the basic type as shown above can be used in object:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = observable(&#123;</span><br><span class="line">    simpleNumber: <span class="number">1</span>,</span><br><span class="line">    simpleString: <span class="string">"text~"</span>,</span><br><span class="line">    simpleArray: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>],</span><br><span class="line">    map: <span class="keyword">new</span> <span class="built_in">Map</span>([ [<span class="string">"a"</span>, <span class="number">1</span>], [<span class="string">"b"</span>, <span class="number">2</span>], [<span class="string">"c"</span>, <span class="number">3</span>] ]),</span><br><span class="line">    deepObj: &#123;</span><br><span class="line">    	user: &#123;</span><br><span class="line">      	articles: [&#123;</span><br><span class="line">        	title: <span class="string">"nodejs"</span></span><br><span class="line">        &#125;]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    show: <span class="literal">false</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="Dynamic-binding"><a href="#Dynamic-binding" class="headerlink" title="Dynamic binding"></a>Dynamic binding</h2><p>For uninitialized variables, can also be tracked.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = observable(&#123;&#125;)</span><br><span class="line">observe(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    log(<span class="string">'#demo-dynamic-binding div'</span>, <span class="string">`<span class="subst">$&#123;obj.a&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br><span class="line">obj.a = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<div id="demo-dynamic-binding" class="demo-after-code">
+    <div class="result"></div>
+</div>
+<script>
+(()=>{
+    const obj = observable({})
+    observe(() => {
+        log('#demo-dynamic-binding div', `${obj.a}`)
+    })
+    obj.a = 3
+})()
+</script>
+
+<h2 id="Conditional-branch"><a href="#Conditional-branch" class="headerlink" title="Conditional branch"></a>Conditional branch</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> objCon = observable(&#123;</span><br><span class="line">    useA: <span class="literal">true</span>,</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">2</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">observe(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (objCon.useA) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(objCon.a) </span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">objCon.a = <span class="number">3</span></span><br><span class="line">objCon.useA = <span class="literal">false</span></span><br><span class="line">objCon.a = <span class="number">4</span> <span class="comment">// not work</span></span><br></pre></td></tr></table></figure>
+
+<div id="demo-conditional-branch" class="demo-after-code">
+    <div class="result"></div>
+</div>
+<script>
+(()=>{
+    const obj = observable({
+        useA: true,
+        a: 1,
+        b: 2
+    })
+    observe(() => {
+        if (obj.useA) {
+            log('#demo-conditional-branch div', `${obj.a}`)
+        }
+    })
+    obj.a = 3
+    obj.useA = false
+    obj.a = 4 // not work
+})()
+</script>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a target="_blank" href="https://github.com/dobjs/dob-docs/blob/master/src/v2/guide/observable.md">Edit this page on github</a>
+
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 ascoders<br>
+    </div>
+  </div>
+</footer>
+      </div>
+      <nav id="mobile-nav">
+  
+    <a href="/dob-docs/v2/guide/introduction.html" class="mobile-nav-link">Guide</a>
+  
+</nav>
+      
+
+<script src="/dob-docs/js/script.js"></script>
+
+    </div>
+  
+</body>
+
+</html>
