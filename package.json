@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "hexo server",
     "deploy": "npm run clean && hexo deploy",
+    "build": "npm run clean && hexo generate",
     "clean": "rm -rf .deploy_git && rm -rf public"
   },
   "repository": {

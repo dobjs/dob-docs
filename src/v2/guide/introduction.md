@@ -4,7 +4,7 @@ layout: guide
 ---
 
 <a href="https://github.com/dobjs/dob" target="_blank">
-    <img src="https://avatars1.githubusercontent.com/u/32093464?s=200&v=4" width=100 />
+    <img src="https://avatars1.githubusercontent.com/u/32093464?s=400&u=d360e449a9d59cf7422100349711ab0e0389d06a&v=4" width=100 />
 </a>
 
 [dob](https://github.com/dobjs/dob) is a tool for monitoring object changes by using Proxy.
